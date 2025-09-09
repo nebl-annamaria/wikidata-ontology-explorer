@@ -10,6 +10,11 @@ The result is an interactive graph where you can expand nodes by clicking on the
 
 - Query **Wikidata SPARQL** endpoint
 - Visualize ontology hierarchies as graphs
+- Relation-specific edge colors:
+  - 🔵 P279 – Subclass of
+  - 🟠 P31 – Instance of
+  - 🟢 P361 – Part of
+  - 🔴 P527 – Has part
 - Node coloring by status:
   - 🟩 **expanded** – already expanded node
   - 🟪 **new** – newly loaded node
@@ -20,13 +25,33 @@ The result is an interactive graph where you can expand nodes by clicking on the
 
 ### Main screen with topic selection
 
-![Screenshot 1](screenshots/screenshot2.png)
+![Screenshot 1](screenshots/screenshot1.png)
 
 ### Expanded ontology graph
 
-![Screenshot 2](screenshots/screenshot1.png)
+![Screenshot 2](screenshots/screenshot2.png)
 
 ---
+
+## 🖼 Example usage
+
+Select a topic from the dropdown (e.g., _Mathematics_).
+
+Select which relations you want to query by ticking the checkboxes (colored dots indicate edge colors).
+
+Press **Start with root** → the root node is created.
+
+Click on a node in the graph to **select it**. The currently selected node is highlighted.
+
+Press **Run query** to expand the selected node with the chosen relations.
+
+The **log panel** above the graph will display:
+
+the executed relations
+
+number of children found
+
+their labels and counts
 
 ## 📦 Installation
 
@@ -55,22 +80,11 @@ The result is an interactive graph where you can expand nodes by clicking on the
 ## 🚀 Run the app
 
 ```bash
-streamlit run wikipedia-sparql.py
+streamlit run app.py
 ```
 
 Then open your browser at:
 👉 [http://localhost:8501](http://localhost:8501)
-
----
-
-## 📂 Project structure
-
-```
-.
-├── wikipedia-sparql.py      # Main Streamlit app
-├── requirements.txt         # Dependencies
-└── README.md                # Documentation
-```
 
 ---
 
@@ -95,8 +109,8 @@ Then open your browser at:
 ## 🛠 Development tips
 
 - To add more topics, extend the `TOPICS` dictionary in `wikipedia-sparql.py`.
-- To experiment with different layouts, modify the `apply_tree_layout` function.
-- For larger graphs, increase the `limit` parameter in `get_children`.
+- To experiment with different layouts, modify the `apply_tree_layout` function in `layout.py`.
+- For larger graphs, increase the `limit` parameter in `get_children` (`query.py`).
 
 ---
 
